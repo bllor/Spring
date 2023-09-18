@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 
+	    <context:component-scan base-package="sub01"/>
+	     sub01안에 컨테이너에 들어갈 변수를 찾음 
+		 스프링 컨테이너 객체 탐색 
+		<bean id="lg" class="sub01.LgTV"></bean>
+		<bean id="samsung" class="sub01.SamsungTV"></bean>
+		<bean id="spk" class="sub01.Speaker"></bean>
+		 Class가 늘어날 수록 관리 해야하는 bean이 증가한다는 것이 spring이 단점이다.
+	 -->
+	 
+	 <context:component-scan base-package="sub02"/>
+	  <!-- 
+		   bean으로 모든 것을 설정하기 힘드므로 scan을 한다.
+		   scan을 하려는 파일의 클래스 위에 어노테이션으로 @component를 추가한다.
+		   각 클래스의 이름은 소문자로 작성되는데 @component("작성할 이름")을 하면 원하는 이름으로 저장할 수 있다.  
+	  -->
+	 
+
+</beans>
