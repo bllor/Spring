@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+   
+	 
+	 <context:component-scan base-package="ch03"/>
+	  <!-- 
+	  	   sub2내의 component를 scan하므로 따로 지정해주지 않아도 된다.
+		   bean으로 모든 것을 설정하기 힘드므로 scan을 한다.
+		   scan을 하려는 파일의 클래스 위에 어노테이션으로 @component를 추가한다.
+		   각 클래스의 이름은 소문자로 작성되는데 @component("작성할 이름")을 하면 원하는 이름으로 저장할 수 있다.
+		   컴포넌트 스캔에서 패키지 선언은 한 개 밖에 되지 않으므로 통합패키지를 만들어준다.
+		   패키지명들을 ch03.sub1,2,3으로 변경하여서 ch03하위 패키지들은 전부다 적용이 가능하도록 만들었다.  
+	  -->
+	
+		<!-- Annotation 기반 AOP 처리를 위한 Auto Proxy 설정 -->
+		<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+		<!-- AOP설정 -->
+		<aop:config>
+			<aop:pointcut id="allPointcut" expression="execution(void ch03.sub02.Service.*(..))" />		
+			<aop:pointcut id="selectPointcut" expression="execution(void ch03.sub02.Service.select())" />		
+			<aop:pointcut id="updatePointcut" expression="execution(void ch03.sub02.Service.update(*))" />		
+			<aop:pointcut id="deletePointcut" expression="execution(void ch03.sub02.Service.delete(*,*))" />		
+			<aop:aspect ref="logAdvice" >
+				<aop:before method="beforeLog" pointcut-ref="selectPointcut"/>
+				<aop:after method="afterLog" pointcut-ref="selectPointcut"/>
+			</aop:aspect >
+			<!-- select 실행 전에 beforelog, select가 실행된 후에 afterlog가 실행된다. -->
+			<aop:aspect ref="logAdvice" >
+				<aop:before method="beforeLog" pointcut-ref="updatePointcut"/>
+				<aop:after method="afterLog" pointcut-ref="updatePointcut"/>
+			</aop:aspect >
+			<aop:aspect ref="logAdvice" >
+				<aop:before method="beforeLog" pointcut-ref="deletePointcut"/>
+				<aop:after method="afterLog" pointcut-ref="deletePointcut"/>
+			</aop:aspect >
+		
+		</aop:config>
+		
+		
+		 <!-- 
+		 pointcut은 핵심관심을 나타내는 것
+		 service.* Service클래스의 모든 것
+		 (..)모든 변수명인데 return 타입이 void 매개변수 제한이 없음
+		 (*)매개변수 한 개인 경우에만 가능
+		 (*,*)매개변수 두 개인 경우에만 사용
+		  aspect는 부가기능 부가기능을 갖는 것은 logAdvice
+		  
+		  -->
+
+</beans>
