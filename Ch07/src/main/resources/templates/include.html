@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ch07::include</title>
+	</head>
+	<body>
+		<h3>타임리프 include</h3>
+		
+		<h4>include 기본</h4>
+		<th:block th:include="/fragment/_header.html"></th:block>
+		<!-- th:block은 가상태그로 사용되며, 다른 태그가 있을 경우 덮어씌어진다. -->
+		<main>
+			<h3>main include</h3>
+		</main>		
+		<th:block th:include="/fragment/_footer.html"></th:block>
+		
+		
+		<h4>insert</h4>
+		<!-- 특정 태그 내에 삽입  -->	
+		<hr>
+		<div th:insert="/fragment/_header.html"></div>
+		<main>
+			<h3>main insert</h3>
+		</main>		
+		<div th:insert="/fragment/_footer.html"></div>
+		<hr>
+		<h4>replace</h4>
+		<div th:replace="/fragment/_header.html"></div>
+		<main>
+			<h3>main insert</h3>
+		</main>		
+		<div th:replace="/fragment/_footer.html"></div>
+		
+	</body>
+</html>

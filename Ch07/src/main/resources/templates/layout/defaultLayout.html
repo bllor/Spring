@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ch07::defaultLayout</title>
+	</head>
+	<body>
+		<h3>defaultLayout</h3>
+		<header>
+			<h3>header입니다.</h3>	
+		</header>
+		<main layout:fragment="content">
+		</main>
+		<footer>
+			<h3>footer 입니다.</h3>
+		</footer>
+	</body>
+</html>
+<!--
+레이아웃인 header, footer를 공통으로 사용하고, main부분만 바뀜	
+	
+-->

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ch07.mapper.User1Mapper">
+<!-- 
+	insert를 하게되면 dto가 바인딩 되는데(dao에서 설정), dto의 uid가 #{uid}안으로 들어온다. 
+-->
+	<insert id="insertUser1"> 
+		INSERT INTO `user1` values (#{uid},#{name},#{hp},#{age});
+	</insert>
+
+	<select id="selectUser1s" resultType="kr.ch07.dto.User1DTO">
+	<!-- resultType은 selectUser1s의 object의 타입을 정해준다. 
+	object는 아무거나 다 받을 수 있는데  타입을 ch06.dto.user1DTO로 정해줌으로써 object의 타입이 user1DTO가 된다.
+	resultType은 update, delete는 필요없다.
+	-->
+		select * from `user1`;
+	</select>
+
+	<select id="selectUser1" resultType="kr.ch07.dto.User1DTO">
+		select* from `user1` where uid= #{uid};
+	</select>
+
+	<update id="updateUser1"  >
+		update `user1` set `name`=#{name}, `hp`=#{hp}, `age`=#{age} where `uid`=#{uid} ;
+	</update>
+
+	<delete id="deleteUser1"  >
+		delete from `user1` where uid=#{uid};
+	</delete>
+	
+</mapper>
