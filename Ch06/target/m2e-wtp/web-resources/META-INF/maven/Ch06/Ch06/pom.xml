@@ -65,6 +65,26 @@
 	    <artifactId>mybatis-spring</artifactId>
 	    <version>3.0.2</version>
 	</dependency>
+	
+	<!-- log를 추가하기 위한 라이브러리 -->
+	<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.18.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.18.0</version>
+    </dependency>
+	<!-- 콘솔 색을 바꾸기 위한 라이브러리 -->
+	<!-- https://mvnrepository.com/artifact/org.fusesource.jansi/jansi -->
+	<dependency>
+    <groupId>org.fusesource.jansi</groupId>
+    <artifactId>jansi</artifactId>
+    <version>2.4.0</version>
+	</dependency>
 
 </dependencies>
   

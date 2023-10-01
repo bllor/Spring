@@ -7,5 +7,6 @@
     <mapper resource="./mappers/user1.xml"/>
     <mapper resource="./mappers/user2.xml"/>
     <mapper resource="./mappers/user3.xml"/>
+    <mapper resource="./mappers/user4.xml"/>
   </mappers>
 </configuration>
