@@ -78,14 +78,14 @@
       <artifactId>log4j-api</artifactId>
       <version>2.18.0</version>
     </dependency>
-	<!-- 콘솔 색을 바꾸기 위한 라이브러리 -->
-	<!-- https://mvnrepository.com/artifact/org.fusesource.jansi/jansi -->
-	<dependency>
+    <!-- ansi 설정을 해제하기 위해 존재하는 것  
+    밑의 dependency가 존재하지 않으면 에러가 나므로 추가하기
+    -->
+    <dependency>
     <groupId>org.fusesource.jansi</groupId>
     <artifactId>jansi</artifactId>
     <version>2.4.0</version>
 	</dependency>
-
 </dependencies>
   
   <build>
