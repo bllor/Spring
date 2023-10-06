@@ -4,103 +4,22 @@
 		<meta charset="UTF-8">
 		<title>Ch10.Spring REST API 실습</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-		<script>
-			
-			$(function(){
-				
-				//User1
-				$('#btnUser1s').click(function(){
-					
-					$.ajax({
-						type: 'GET',
-						url: '/Ch10/user1',
-						dataType:'json',
-						success: function(data){
-							console.log(data);
-						}
-					});
-					
-				});
-				
-				
-				$('#btnUser1').click(function(){
-					
-					$.ajax({
-						type: 'GET',
-						url: '/Ch10/user1/A102',//user1옆의 A102가 ID파라미터
-						dataType:'json',
-						success: function(data){
-							console.log(data);
-						}
-					});
-					
-				});
-				
-				
-				$('#btnUser1Register').click(function(){
-					
-					const jsonData={
-						ID:'s105',
-						NAME:'김길서',
-						HP:'010-7777-8888',
-						AGE: 22
-					};
-					
-					$.ajax({
-						type: 'POST',
-						url: '/Ch10/user1',
-						data: jsonData,
-						dataType:'json',
-						success: function(data){
-							console.log(data);
-						}
-					});
-					
-				});
-				
-				
-				$('#btnUser1Modify').click(function(){
-
-						const jsonData={
-						ID:'s105',
-						NAME:'이길남',
-						HP:'010-8888-9999',
-						AGE: 32
-					};
-					
-					$.ajax({
-						type: 'PUT',
-						url: '/Ch10/user1',
-						data: jsonData,
-						dataType:'json',
-						success: function(data){
-							console.log(data);
-						}
-					});
-					
-					
-				});
-				
-				
-				$('#btnUser1Delete').click(function(){
-					
-					$.ajax({
-						type: 'DELETE',
-						url: '/Ch10/user1/s101',
-						dataType:'json',
-						success: function(data){
-							console.log(data);
-						}
-					});
-					
-				});
-				
-			});
-			
-		</script>
+		<script th:src="@{/js/user1.js}"></script>
+		<script th:src="@{/js/user2.js}"></script>
 	</head>
 	<body>
 		<h3>Ch10.Spring REST API</h3>
+		
+		<!--
+			GET: 	/user1
+			Get: 	/user1/{id}
+			POST: 	/user1
+			PUT:	/user1
+			DELETE:	/user1/{id}
+			파라미터가 더 나와야 하면 /user1/{id}/{name}처럼 하나 더 붙여주면 된다.
+			브라우저로는 REST API가 작동여부를 GET밖에 하지 못하는데,
+			Post Man 프로그램을 다운 받음으로써 다른 CRUD도 확인할 수 있다.
+		-->
 		
 		<h4>User1</h4>
 		<button id="btnUser1s">목록</button>
@@ -108,5 +27,13 @@
 		<button id="btnUser1Register">등록</button>
 		<button id="btnUser1Modify">수정</button>
 		<button id="btnUser1Delete">삭제</button>
+
+		<h4>User2</h4>
+		<button id="btnUser2s">목록</button>
+		<button id="btnUser2">조회</button>
+		<button id="btnUser2Register">등록</button>
+		<button id="btnUser2Modify">수정</button>
+		<button id="btnUser2Delete">삭제</button>
+
 	</body>
 </html>
