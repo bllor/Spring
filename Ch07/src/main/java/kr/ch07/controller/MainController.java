@@ -33,8 +33,8 @@ public class MainController {
 		//Builder를 이용한 초기화
 		User1DTO user3 = User1DTO.builder().uid("a103").name("김춘동").hp("010-8888-8888").age(87).build();
 		
-		User1DTO user4 = null;
-		
+//		User1DTO user4 = null;
+
 		
 		//List 생성
 		List<User1DTO> users = new ArrayList<>();
@@ -42,14 +42,14 @@ public class MainController {
 		users.add(new User1DTO("A102","김무신","010-2222-1111",21));
 		users.add(new User1DTO("A103","김유문","010-3333-1111",43));
 		users.add(new User1DTO("A104","김유무","010-4444-1111",29));
-		users.add(new User1DTO("A105","김신신","010-5555-1111",98));
+//		users.add(new User1DTO("A105","김신신","010-5555-1111",98));
 		
 		model.addAttribute("str1",str1);
 		model.addAttribute("str2",str2);
 		model.addAttribute("user1",user1);
 		model.addAttribute("user2",user2);
 		model.addAttribute("user3",user3);
-		model.addAttribute("user4",user4);
+//		model.addAttribute("user4",user4);
 		model.addAttribute("users",users);
 		
 		log.info(user1.toString());
