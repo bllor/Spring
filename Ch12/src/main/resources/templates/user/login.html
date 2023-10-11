@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>USER::LOGIN</title>
+	</head>
+	<body>
+		<h3>로그인</h3>
+		
+		<form>
+			
+			<input type="text" name="uid" />
+			<input type="text" name="pass" />
+			<input type="submit" value="로그인" />
+			
+		</form>
+		<!--
+			로그인 페이지 주소는 정형화 되어 있고, 뒤에 제공자만 변경된다.
+		-->
+		<a th:href="@{/oauth2/authorization/kakao}">카카오 로그인</a>
+	</body>
+</html>
