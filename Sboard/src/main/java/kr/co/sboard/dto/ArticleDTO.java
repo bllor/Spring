@@ -2,7 +2,9 @@ package kr.co.sboard.dto;
 
 import kr.co.sboard.entity.ArticleEntity;
 import lombok.*;
+import lombok.extern.log4j.Log4j2;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @Builder
+@Log4j2
 public class ArticleDTO {
 
 
@@ -21,7 +24,7 @@ public class ArticleDTO {
     private String cate;
     private String title;
     private String content;
-    private String fname;
+    private MultipartFile fname;
     private int hit;
     private String writer;
     private String regip;

@@ -47,3 +47,8 @@ spring:
     thymeleaf:
         cache: false
         prefix: file:src/main/resources/templates/
+
+    servlet:
+        multipart:
+            location: src/main/resources/static/file #경로
+            max-file-size: 10MB #크기
