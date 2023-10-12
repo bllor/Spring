@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 
-
 @Configuration
 public class SecurityConfiguration {
 
@@ -21,14 +20,22 @@ public class SecurityConfiguration {
 	public SecurityFilterChain filterChain( HttpSecurity http ) throws Exception {
 		
 		http
-			//사이트 위변조 방지 비활성
-			.csrf(CsrfConfigurer::disable)//::는 매서드 참조 연산자로 람다식을 간결하게 표현해준다.
-			//폼로그인 설정
-			.formLogin(config -> config.loginPage("/user/login")
-										.defaultSuccessUrl("/")
-										.failureUrl("/user/login?success=100")
-										.usernameParameter("uid")
-										.passwordParameter("pass"))
+				// 사이트 위변조 방지 비활성
+				.csrf(CsrfConfigurer::disable) // 메서드 참조 연산자로 람다식을 간결하게 표현
+				// 폼 로그인 설정
+				.formLogin(config -> config.loginPage("/user/login")
+						.defaultSuccessUrl("/",true)
+						.failureUrl("/user/login?success=100")
+						/*.successHandler(new AuthenticationSuccessHandler() {
+							@Override
+							public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+								response.sendRedirect("/");
+							}
+						})
+						*/
+
+						.usernameParameter("uid")
+						.passwordParameter("pass"))
 
 			//로그아웃 설정
 				 .logout(config ->config.logoutUrl("/user/logout")
@@ -37,8 +44,8 @@ public class SecurityConfiguration {
 						 				.logoutSuccessUrl("/user/login?success=200"))
 			//인가 권한 설정
 			.authorizeHttpRequests(AuthorizeRequests ->AuthorizeRequests
-														.requestMatchers("/admin/**").hasAuthority("ADMIN") 
-														.requestMatchers("/manager/**").hasAnyAuthority("ADMIN","MANAGER") 
+														.requestMatchers("/admin/**").hasRole("ADMIN")
+														.requestMatchers("/article/**").hasAnyRole("ADMIN","MANAGER","USER")
 														.requestMatchers("/user/**").permitAll()
 														.requestMatchers("/").authenticated()
 														.requestMatchers("/vendor/**", "/js/**", "/dist/**", "/data/**", "/less/**").permitAll());

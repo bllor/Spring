@@ -3,7 +3,7 @@ jwt:
     secret: VdmRJpYPADdk8Q7IumXgNFnbyizHtoBs
 logging:
     file:
-        name: log/Ch11.log
+        name: log/Sboard.log
     level:
         jdbc:
             connection: info
@@ -32,7 +32,7 @@ spring:
     jpa:
         database: mysql
         hibernate:
-            ddl-auto: update
+            ddl-auto: none
             naming:
                 physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         properties:
